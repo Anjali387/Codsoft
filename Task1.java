@@ -9,41 +9,31 @@ public class JavaExample
 {
     public static void main(String args[])
     {
-    	/* This program assumes that the student has 6 subjects,
-    	 * thats why I have created the array of size 6. You can
-    	 * change this as per the requirement.
-    	 */
-        int marks[] = new int[6];
-        int i;
-        float total=0, avg;
-        Scanner scanner = new Scanner(System.in);
-		
-        
-        for(i=0; i<6; i++) { 
-           System.out.print("Enter Marks of Subject"+(i+1)+":");
-           marks[i] = scanner.nextInt();
-           total = total + marks[i];
-        }
-        scanner.close();
-        //Calculating average here
-        avg = total/6;
-        System.out.print("The student Grade is: ");
-        if(avg>=80)
-        {
-            System.out.print("A");
-        }
-        else if(avg>=60 && avg<80)
-        {
-           System.out.print("B");
-        } 
-        else if(avg>=40 && avg<60)
-        {
-            System.out.print("C");
-        }
-        else
-        {
-            System.out.print("D");
+    	
+       int computer = (int) (Math.random() * 100);
+        int count = 0;
+        Scanner sc = new Scanner(System.in);
+        int user = -1;
+
+        while (user != computer) {
+            String response = JOptionPane.showInputDialog(null, "Enter a guess between 1 and 100");
+            user = Integer.parseInt(response);
+            JOptionPane.showMessageDialog(null, "" + Guess(user, computer, count));
+            count++;
         }
     }
+        public static String Guess(int user,int computer,int count) {
+
+            if (user > 100 || user < 0) {
+                return "Opps! Your guess is invalid";
+
+            } else if (user == computer) {
+                return "Congratulations! " + count;
+
+            } else if (user > computer) {
+                return "Opps! Your Guess is too high try again " + count;
+            } else {
+                return "Opps! Your Guess is too low try again " + count;
+            }
 }
 }
